@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import java.util.Timer
-import kotlin.concurrent.schedule
+import kotlin.concurrent.*
 
 
 class Main: AppCompatActivity() {
@@ -22,8 +22,7 @@ class Main: AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        timer = Timer()
-        timer.schedule(0, 1000L/fps){
+        timer = timer(period = 1000L/fps, initialDelay = 0){
             handler.post {
                 joguinho.invalidate()
             }
